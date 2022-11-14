@@ -1,0 +1,55 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[project]
+name = "transfermarkt_ocrosby"
+version = "0.0.1"
+authors = [
+  { name="Example Author", email="author@example.com" },
+]
+description = "A python module for retrieving information from https://www.transfermarkt.com."
+readme = "README.md"
+requires-python = ">=3.10.6"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU General Public License (GPL)",
+    "Operating System :: OS Independent"
+]
+keywords = [
+    "transfermarkt",
+    "football",
+    "soccer",
+    "football club",
+    "football player",
+    "football manager",
+    "football league",
+    "football competition",
+    "football transfer",
+    "football statistics",
+    "football data"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/ocrosby/transfermarkt"
+"Bug Tracker" = "https://github.com/ocrosby/transfermarkt/issues"
+"Target URL" = "https://www.transfermarkt.com"
+
+[tool.poetry]
+name = "transfermarkt"
+version = "0.0.0"
+description = "A python module for retrieving information from https://www.transfermarkt.com."
+authors = ["Omar Crosby <omar.crosby@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+beautifulsoup4 = "^4.9.3"
+requests = "^2.25.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.2"
+pytest-cov = "^2.11.1"
+pytest-mock = "^3.5.1"
+
+
+
