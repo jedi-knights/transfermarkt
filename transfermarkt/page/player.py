@@ -17,15 +17,10 @@ class PlayerPage(PageObject):
 
         identifier = kwargs.get("identifier")
 
-        user_agent = 'Mozilla/5.0'
-        user_agent += '(X11; Linux x86_64)'
-        user_agent += ' AppleWebKit/537.36'
-        user_agent += ' (KHTML, like Gecko)'
-        user_agent += ' Chrome/47.0.2526.106'
-        user_agent += ' Safari/537.36'
+        user_agent = 'transfermarkt'
 
         self.headers = {
-            'User-Agent': user_agent
+            'user-agent': user_agent
         }
 
         self.url = f"https://www.transfermarkt.com/{slug}/profil/spieler/{identifier}"

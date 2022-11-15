@@ -4,14 +4,11 @@ import requests
 
 class PageObject(object):
     def __init__(self, **kwargs):
-        self._validate_kwargs()
         self.url = kwargs.get("url")
         self.soup = None
         self.response = None
         self.headers = None
 
-    def _validate_kwargs(self):
-        pass
 
     @property
     def url(self):
@@ -45,6 +42,9 @@ class PageObject(object):
         return self.response.status_code
 
     def load(self, url: str = None):
+        if self.url is None and url is None:
+            raise ValueError("The url parameter is required!")
+
         if url is not None:
             self.url = url
 
@@ -64,6 +64,7 @@ class PageObject(object):
         self.url = None
         self.soup = None
         self.response = None
+        self.headers = None
 
         return self
 
