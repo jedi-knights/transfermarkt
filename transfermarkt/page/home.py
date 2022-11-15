@@ -21,7 +21,7 @@ class HomePage(PageObject):
 
         self.load()
 
-    def get_domains(self) -> list[Domain]:
+    def get_domains(self):
         switcher = self.soup.select("div.tm-domainswitcher-box > ul")
 
         if len(switcher) == 0:
