@@ -5,6 +5,7 @@ from transfermarkt.common.currency import Currency
 
 from transfermarkt.common.utils import urljoin
 
+
 class CurrencyService:
     BASE_URL = "https://www.x-rates.com"
 
@@ -14,7 +15,7 @@ class CurrencyService:
     def get_exchange_rate(self, from_currency: Currency, to_currency: Currency) -> float:
         params = f"?from={from_currency.name}&to={to_currency.name}&amount=1"
 
-        url = urljoin(self.BASE_URL, f"calculator")
+        url = urljoin(self.BASE_URL, "calculator")
         url = urljoin(url, params)
 
         res = requests.get(url)
@@ -35,9 +36,3 @@ class CurrencyService:
 
     def convert(self, amount: float, from_currency: Currency, to_currency: Currency) -> float:
         return amount * self.get_exchange_rate(from_currency, to_currency)
-
-if __name__ == "__main__":
-    service = CurrencyService()
-    print(f"Euro to USD: {service.get_exchange_rate(Currency.EUR, Currency.USD)}")
-    print(f"300,000 Euros to USD: {service.convert(300000, Currency.EUR, Currency.USD):.2f}")
-

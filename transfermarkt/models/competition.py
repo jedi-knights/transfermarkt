@@ -25,4 +25,16 @@ class Competition:
         self.tier = kwargs.get("tier")
 
     def __repr__(self):
-        return f"Competition(id='{self.id}', name='{self.name}', country='{self.country}', total_clubs={self.total_clubs}, total_players={self.total_players}, avg_age={self.avg_age}, foreigners_percent={self.foreigners_percent}, total_value='{self.total_value}' tier='{self.tier}')"
+        attribute_value_pairs = [
+            f"id='{self.id}'",
+            f"name='{self.name}'",
+            f"country='{self.country}'",
+            f"total_clubs={self.total_clubs}",
+            f"total_players={self.total_players}",
+            f"avg_age={self.avg_age}",
+            f"foreigners_percent={self.foreigners_percent}",
+            f"total_value='{self.total_value}'",
+            f"tier='{self.tier}'",
+        ]
+
+        return f"Competition({', '.join(attribute_value_pairs)})"

@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class Currency(Enum):
     EUR = "€"
     GBP = "£"
@@ -19,6 +20,7 @@ def string_to_currency(string: str) -> Currency:
             return currency
 
     raise ValueError(f"Currency {string} not found")
+
 
 if __name__ == "__main__":
     for currency in Currency:

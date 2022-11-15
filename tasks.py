@@ -19,25 +19,30 @@ def clean(c):
     c.run("rm -rf coverage")
     c.run("rm -rf dist")
 
+
 @task
 def fixtures(c):
     """Lists PyTest fixtures."""
     c.run("pytest --fixtures")
+
 
 @task
 def utest(c):
     """Runs PyTest unit tests."""
     c.run("pytest tests/unit")
 
+
 @task
 def itest(c):
     """Runs PyTest integration tests."""
     c.run("pytest tests/integration")
 
+
 @task
 def test(c):
     """Runs PyTest unit and integration tests."""
     c.run("pytest tests/unit tests/integration")
+
 
 @task
 def ucover(c):
@@ -45,16 +50,13 @@ def ucover(c):
     c.run("coverage run -m pytest tests/unit")
     c.run("coverage lcov -o ./coverage/lcov.info")
 
+
 @task
 def cover(c):
     """Runs PyTest unit and integration tests with coverage."""
     c.run("coverage run -m pytest --cov=common tests/unit tests/integration")
     c.run("coverage lcov -o ./coverage/lcov.info")
 
-@task
-def swag(c):
-    """Generates Swagger documentation."""
-    c.run("footy swagger build")
 
 @task
 def lint(c):

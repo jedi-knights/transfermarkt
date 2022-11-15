@@ -21,4 +21,14 @@ class Club:
         self.market_value = kwargs.get("market_value")
 
     def __repr__(self):
-        return f"Club(id={self.id}, name='{self.name}', total_players={self.total_players}, avg_age={self.avg_age}, total_foreigners={self.total_foreigners}, avg_market_value='{self.avg_market_value}', market_value='{self.market_value}')"
+        attribute_value_pairs = [
+            f"id={self.id}",
+            f"name='{self.name}'",
+            f"total_players={self.total_players}",
+            f"avg_age={self.avg_age}",
+            f"total_foreigners={self.total_foreigners}",
+            f"avg_market_value='{self.avg_market_value}'",
+            f"market_value='{self.market_value}'",
+        ]
+
+        return f"Club({', '.join(attribute_value_pairs)})"

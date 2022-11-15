@@ -1,8 +1,7 @@
-from common.services.transfer_market_service import TransferMarketService
-from common.utils import urljoin
-from page.object import PageObject
-from page.transfermarkt.models import Competition
-from page.transfermarkt.utils import BASE_URL, DataCell
+from transfermarkt.common.utils import urljoin
+from transfermarkt.page.object import PageObject
+from transfermarkt.models.competition import Competition
+from transfermarkt.page.utils import BASE_URL
 
 
 def parse_competition(table_row):
@@ -21,9 +20,6 @@ def parse_competition(table_row):
     #     DataCell(table_row[7]).to_string().parse_percentage().read(),
     #     "total_value": DataCell(table_row[9]).to_string().read(),
     # }
-
-
-
 
 
 class CompetitionsPage(PageObject):
@@ -93,33 +89,30 @@ class CompetitionsPage(PageObject):
 
 
 if __name__ == "__main__":
-    service = TransferMarketService()
-
-    competition_count = 0
-    team_count = 0
-    player_count = 0
-    competitions = CompetitionsPage.get_all_competitions()
-    for competition in competitions:
-        try:
-            competition_count += 1
-            print(competition)
-
-            teams = service.get_teams(identifier=competition.id)
-            for team in teams:
-                team_count += 1
-                print(f"\t{team}")
-
-                players = service.get_players(identifier=team.id)
-                for player in players:
-                    player_count += 1
-                    print(f"\t\t{player}")
-        except Exception as e:
-            print(e)
-
-
-    print(f"Competitions: {competition_count}")
-    print(f"Teams: {team_count}")
-    print(f"Players: {player_count}")
-
-
-
+    # service = TransferMarketService()
+    #
+    # competition_count = 0
+    # team_count = 0
+    # player_count = 0
+    # competitions = CompetitionsPage.get_all_competitions()
+    # for competition in competitions:
+    #     try:
+    #         competition_count += 1
+    #         print(competition)
+    #
+    #         teams = service.get_teams(identifier=competition.id)
+    #         for team in teams:
+    #             team_count += 1
+    #             print(f"\t{team}")
+    #
+    #             players = service.get_players(identifier=team.id)
+    #             for player in players:
+    #                 player_count += 1
+    #                 print(f"\t\t{player}")
+    #     except Exception as e:
+    #         print(e)
+    #
+    # print(f"Competitions: {competition_count}")
+    # print(f"Teams: {team_count}")
+    # print(f"Players: {player_count}")
+    pass

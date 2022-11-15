@@ -18,3 +18,22 @@ def urljoin(base: str, path: str):
         path = path[1:]
 
     return str(f"{base}/{path}")
+
+
+def slugify(value: str | None) -> str | None:
+    """
+    Converts the given value into a slug.
+
+    :param value:
+    :return: A slug
+    """
+    if value is None:
+        return None
+
+    value = value.strip()
+    value = value.lower()
+    value = value.replace(" ", "-")
+    value = value.replace(".", "")
+    value = value.replace("'", "")
+
+    return value

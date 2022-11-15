@@ -1,11 +1,8 @@
 import datetime as dt
 
 from transfermarkt.page.object import PageObject
-from transfermarkt.models.domain import Domain
-from transfermarkt.page.utils import get_href_from_anchor, get_text_from_anchor
-from common.utils import slugify
-
-from common.services import currency_service
+from transfermarkt.common.utils import slugify
+from transfermarkt.services import currency_service
 
 
 class PlayerPage(PageObject):
