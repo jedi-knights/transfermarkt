@@ -9,7 +9,6 @@ class PageObject(object):
         self.response = None
         self.headers = None
 
-
     @property
     def url(self):
         return self._url
@@ -69,4 +68,4 @@ class PageObject(object):
         return self
 
     def __repr__(self):
-        return f"<PageObject(url='{self.url}')>"
+        return f"PageObject(url='{self.url}')"

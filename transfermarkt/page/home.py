@@ -23,6 +23,10 @@ class HomePage(PageObject):
 
     def get_domains(self) -> list[Domain]:
         switcher = self.soup.select("div.tm-domainswitcher-box > ul")
+
+        if len(switcher) == 0:
+            return []
+
         unordered_list = switcher[0]
         items = unordered_list.select("li")
 

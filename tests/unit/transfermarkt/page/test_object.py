@@ -92,4 +92,4 @@ def test_repr(obj):
     obj.soup = {}
     obj.response = MockResponse(status_code=200)
 
-    assert repr(obj) == "PageObject(url=http://test.com)"
+    assert repr(obj) == "PageObject(url='http://test.com')"

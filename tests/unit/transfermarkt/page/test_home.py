@@ -37,9 +37,13 @@ class TestGetDomains:
         # Arrange
         home.soup = bs4.BeautifulSoup("", "html.parser")
 
-        # Act/Assert
-        with pytest.raises(AttributeError, match="'NoneType' object has no attribute 'find'"):
-            home.get_domains()
+        # Act
+        domains = home.get_domains()
+
+        # Assert
+        assert type(domains) == list
+        assert len(domains) == 0
+
 
     def test_with_valid_soup(self, home):
         # Arrange
