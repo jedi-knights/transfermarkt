@@ -54,3 +54,20 @@ class TestUrlJoin:
 
     def test_base_is_empty_and_path_ends_with_slash(self):
         assert utils.urljoin("", "path/") == "path/"
+
+
+class TestSlugify:
+    def test_with_undefined_value(self):
+        assert utils.slugify(None) is None
+
+    def test_with_empty_value(self):
+        assert utils.slugify("") == ""
+
+    def test_with_simple_name(self):
+        assert utils.slugify("John Jones") == "john-jones"
+
+    def test_removes_dots(self):
+        assert utils.slugify("a.b c") == "ab-c"
+
+    def test_removes_single_quotes(self):
+        assert utils.slugify("Shae O'Malley") == "shae-omalley"

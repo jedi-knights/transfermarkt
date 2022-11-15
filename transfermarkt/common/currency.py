@@ -21,7 +21,3 @@ def string_to_currency(string: str) -> Currency:
 
     raise ValueError(f"Currency {string} not found")
 
-
-if __name__ == "__main__":
-    for currency in Currency:
-        print(currency)

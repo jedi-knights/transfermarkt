@@ -54,3 +54,26 @@ class TestStringToCurrency:
     def test_none(self):
         with pytest.raises(ValueError):
             string_to_currency(None)
+
+
+class TestCurrencyRepr:
+    def test_eur(self):
+        assert repr(Currency.EUR) == "Currency.EUR"
+
+    def test_gbp(self):
+        assert repr(Currency.GBP) == "Currency.GBP"
+
+    def test_usd(self):
+        assert repr(Currency.USD) == "Currency.USD"
+
+    def test_jpy(self):
+        assert repr(Currency.JPY) == "Currency.JPY"
+
+    def test_krw(self):
+        assert repr(Currency.KRW) == "Currency.KRW"
+
+    def test_inr(self):
+        assert repr(Currency.INR) == "Currency.INR"
+
+    def test_rub(self):
+        assert repr(Currency.RUB) == "Currency.RUB"
