@@ -1,6 +1,7 @@
 # transfermarkt
 A python module for retrieving information from https://www.transfermarkt.com.
 
+![Test](https://github.com/ocrosby/transfermarkt/docs/actions/workflows/test.yml/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/ocrosby/transfermarkt/badge.svg?branch=main)](https://coveralls.io/github/ocrosby/transfermarkt?branch=main)
 
 You can use

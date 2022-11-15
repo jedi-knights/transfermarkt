@@ -20,7 +20,7 @@ def urljoin(base: str, path: str):
     return str(f"{base}/{path}")
 
 
-def slugify(value: str | None) -> str | None:
+def slugify(value: str | None):
     """
     Converts the given value into a slug.
 
