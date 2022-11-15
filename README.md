@@ -1,8 +1,9 @@
 # transfermarkt
 A python module for retrieving information from https://www.transfermarkt.com.
 
-![tests](https://github.com/ocrosby/transfermarkt/actions/workflows/test.yml/badge.svg)
+![Test](https://github.com/ocrosby/transfermarkt/actions/workflows/test.yml/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/ocrosby/transfermarkt/badge.svg?branch=main)](https://coveralls.io/github/ocrosby/transfermarkt?branch=main)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 You can use
 [Github-flavored Markdown](https://guides.github.com/features/mastering-markdown/)
