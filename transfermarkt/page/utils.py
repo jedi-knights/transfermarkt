@@ -1,5 +1,3 @@
-import re
-
 from datetime import date
 
 BASE_URL = "https://www.transfermarkt.com"
@@ -55,4 +53,3 @@ def __get_season(input_date: date) -> int:
         return input_date.year
     else:
         return input_date.year - 1
-
