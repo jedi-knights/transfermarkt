@@ -1,4 +1,4 @@
-name: CI Transfermarkt
+name: build
 
 # When this action will be executed
 on:
