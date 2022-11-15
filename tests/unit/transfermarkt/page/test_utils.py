@@ -1,4 +1,9 @@
+from unittest import mock
+
 import bs4
+import datetime
+
+from freezegun import freeze_time
 
 from transfermarkt.page import utils
 
@@ -61,3 +66,39 @@ class TestGetTextFromAnchor:
         html = "<a href='https://www.acme.com'>  </a>"
         anchor = bs4.BeautifulSoup(html, "html.parser")
         assert utils.get_text_from_anchor(anchor) is None
+
+
+@freeze_time("2020-11-04")
+def test_current_season(mocker):
+    # Arrange
+    mocked_get_season = mocker.patch.object(utils, "__get_season", return_value=13)
+
+    # Act
+    season = utils.current_season()
+
+    # Assert
+    mocked_get_season.assert_called_once_with(datetime.date(2020, 11, 4))
+    assert season == 13
+
+
+@freeze_time("2020-11-04")
+def test_get_season(mocker):
+    # Arrange
+    input_date = datetime.date(2020, 11, 4)
+
+    # Act
+    season = utils.__get_season(input_date)
+
+    # Assert
+    assert season == 2020
+
+
+def test_get_season_same_day():
+    # Arrange
+    input_date = datetime.date(2020, 6, 30)
+
+    # Act
+    season = utils.__get_season(input_date)
+
+    # Assert
+    assert season == 2019
