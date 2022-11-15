@@ -55,6 +55,7 @@ flake8 = "^5.0.4"
 radon = "^5.1.0"
 invoke = "^1.7.3"
 requests-mock = "^1.9.3"
+Flake8-pyproject = "^1.1.0.post0"
 
 [tool.flake8]
 ignore = ['C901', 'W503']
