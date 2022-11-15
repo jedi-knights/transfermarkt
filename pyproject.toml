@@ -10,7 +10,7 @@ authors = [
 ]
 description = "A python module for retrieving information from https://www.transfermarkt.com."
 readme = "README.md"
-requires-python = ">=2.7"
+requires-python = ">=3.8"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: GNU General Public License (GPL)",
