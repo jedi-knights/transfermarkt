@@ -44,7 +44,6 @@ class TestGetDomains:
         assert type(domains) == list
         assert len(domains) == 0
 
-
     def test_with_valid_soup(self, home):
         # Arrange
         markup = """
@@ -68,6 +67,3 @@ class TestGetDomains:
         assert domains[0].url == "https://test1.com"
         assert domains[1].name == "Test 2"
         assert domains[1].url == "https://test2.com"
-
-
-

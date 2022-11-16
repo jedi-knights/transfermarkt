@@ -26,6 +26,15 @@ from transfermarkt import Market
 clubs = Market.get_clubs()
 ```
 
+
+## Publishing the package
+
+```bash
+$ poetry build
+$ poetry config repositories.testpypi https://test.pypi.org/legacy/
+$ poetry publish -r testpypi
+```
+
 ## References
 - [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 - [Transfermarkt](https://www.transfermarkt.com)

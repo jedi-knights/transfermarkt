@@ -1,4 +1,10 @@
+import os
+
 from invoke import task
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 @task
@@ -77,3 +83,13 @@ def lint(c):
     # c.run("poetry run bandit -r .")
     # c.run("poetry run pyupgrade --py36-plus .")
     # c.run("poetry run pre-commit run --all-files")
+
+
+@task(pre=[clean, update, build, lint, test])
+def tpublish(c):
+    """Publishes a test version of the package to PyPI."""
+    username = os.getenv("TEST_PYPI_USERNAME")
+    password = os.getenv("TEST_PYPI_PASSWORD")
+
+    c.run("poetry config repositories.testpypi https://test.pypi.org/legacy/")
+    c.run(f"poetry publish --username={username} --password={password} --repository testpypi", pty=False)

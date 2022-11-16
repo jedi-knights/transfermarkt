@@ -20,4 +20,3 @@ def string_to_currency(string: str) -> Currency:
             return currency
 
     raise ValueError(f"Currency {string} not found")
-

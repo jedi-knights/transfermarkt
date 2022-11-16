@@ -1,8 +1,11 @@
 import datetime as dt
 
+import bs4
+
+from transfermarkt.common.currency import Currency
 from transfermarkt.page.object import PageObject
 from transfermarkt.common.utils import slugify
-from transfermarkt.services import currency_service
+from transfermarkt.services.currency import CurrencyService
 
 
 class PlayerPage(PageObject):
@@ -16,6 +19,7 @@ class PlayerPage(PageObject):
                 slug = slugify(name)
 
         identifier = kwargs.get("identifier")
+        self.currency_service = kwargs.get("currency_service", CurrencyService())
 
         user_agent = 'transfermarkt'
 
@@ -24,7 +28,9 @@ class PlayerPage(PageObject):
         }
 
         self.url = f"https://www.transfermarkt.com/{slug}/profil/spieler/{identifier}"
-        self.load()
+
+        if kwargs.get("auto_load", False):
+            self.load()
 
     @property
     def name(self) -> str:
@@ -52,29 +58,37 @@ class PlayerPage(PageObject):
 
     @property
     def market_value(self) -> str:
+        value = "0.0"
+
         wrapper = self.soup.find("a", class_=["data-header__market-value-wrapper"])
-        value = wrapper.text.strip()
 
-        pivot = value.find(" ")
-        value = value[:pivot]
+        waehrung_items = wrapper.find_all("span", class_=["waehrung"])
 
-        symbol = value[0]
+        if len(waehrung_items) == 2:
+            symbol = waehrung_items[0].text.strip()
+            unit = waehrung_items[1].text.strip()
 
-        unit = value[-1]
-        if unit == "m":
-            value = value[1:-1]
-            value = float(value) * 1000000
-        elif unit == "k":
-            value = value[1:-1]
-            value = float(value) * 1000
+            for child in list(wrapper.children):
+                if type(child) == bs4.element.NavigableString:
+                    value = child.strip()
+                    if len(value) > 0:
+                        value = value.replace('"', "")
+                        break
+
+            if unit == "m":
+                value = float(value) * 1000000
+            elif unit == "k":
+                value = float(value) * 1000
+            else:
+                value = float(value)
+
+            if symbol == "\N{euro sign}":
+                value = self.currency_service.convert(value, Currency.EUR, Currency.USD)
+
+            value = round(value, 2)
+            value = str(value)
         else:
-            value = value[1:]
-            value = float(value)
-
-        if symbol == "\N{euro sign}":
-            value = currency_service.convert_euros_to_dollars(value)
-
-        value = round(value, 2)
+            raise ValueError("Could not parse market value")
 
         return value
 
@@ -95,10 +109,3 @@ class PlayerPage(PageObject):
     @property
     def place_of_birth(self) -> str:
         return self.soup.find("span", {"itemprop": "birthPlace"}).text.strip()
-
-
-if __name__ == "__main__":
-    # page = PlayerPage(slug="eder", identifier="84481")
-    page = PlayerPage(slug="lionel-messi", identifier="28003")
-
-    print(page.market_value)
