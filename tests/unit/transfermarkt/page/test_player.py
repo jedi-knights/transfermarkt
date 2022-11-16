@@ -1,15 +1,15 @@
+import datetime
+
 import bs4
 import pytest
-import datetime
 
 from transfermarkt.common.currency import Currency
 from transfermarkt.page.player import PlayerPage
-from transfermarkt.services.currency import CurrencyService
 
 
 @pytest.fixture
 def player():
-    """ Returns a PlayerPage instance for Kevin De Bruyne
+    """Returns a PlayerPage instance for Kevin De Bruyne
 
     url: https://www.transfermarkt.com/kevin-de-bruyne/profil/spieler/88755
     """

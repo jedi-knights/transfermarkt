@@ -23,4 +23,3 @@ class TestTeamConstructor:
 def test_repr():
     team = Team(id="test", title="test")
     assert repr(team) == "<Team(id='test', title='test')>"
-    

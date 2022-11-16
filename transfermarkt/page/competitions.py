@@ -1,6 +1,6 @@
 from transfermarkt.common.utils import urljoin
-from transfermarkt.page.object import PageObject
 from transfermarkt.models.competition import Competition
+from transfermarkt.page.object import PageObject
 from transfermarkt.page.utils import BASE_URL
 
 
@@ -30,9 +30,7 @@ class CompetitionsPage(PageObject):
 
         # Original: https://www.transfermarkt.com/wettbewerbe/europa/wettbewerbe
         self.url = urljoin(BASE_URL, f"/wettbewerbe/europa?ajax=yw1&page={page}")
-        self.headers = {
-            "user-agent": "transfer_market_service"
-        }
+        self.headers = {"user-agent": "transfer_market_service"}
 
         self.load()
 

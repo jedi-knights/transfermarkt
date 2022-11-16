@@ -1,5 +1,6 @@
 import requests
 
+from transfermarkt.common.gender import Gender
 from transfermarkt.common.utils import urljoin
 from transfermarkt.models.player import Player
 from transfermarkt.models.team import Team
@@ -9,10 +10,10 @@ class MarketService:
     BASE_URL = "https://www.transfermarkt.com"
 
     POSITION_MAPPING = {
-        '1': 'Goalkeeper',
-        '2': 'Defender',
-        '3': 'Midfielder',
-        '4': 'Forward'
+        "1": "Goalkeeper",
+        "2": "Defender",
+        "3": "Midfielder",
+        "4": "Forward",
     }
 
     def __init__(self):
@@ -20,14 +21,10 @@ class MarketService:
 
     @property
     def headers(self):
-        return {
-            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36"
-        }
+        return {"User-Agent": "transfermarkt"}
 
     def get(self, url: str) -> requests.Response:
-        headers = {
-            "user-agent": "transfer_market_service"
-        }
+        headers = {"user-agent": "transfer_market_service"}
         url = urljoin(self.BASE_URL, url)
         res = requests.get(url, headers=headers)
         res.raise_for_status()
@@ -50,14 +47,11 @@ class MarketService:
 
         return teams
 
-
     def get_player_profile(self, name: str, pid: str) -> dict:
         """Retrieve a player profile
 
         Example:
             https://www.transfermarkt.com/alexander-molnar/profil/spieler/100000
-
-
         """
         profile = {}
 

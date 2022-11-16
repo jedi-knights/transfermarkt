@@ -1,8 +1,7 @@
 import os
 
-from invoke import task
-
 from dotenv import load_dotenv
+from invoke import task
 
 load_dotenv()
 
@@ -72,12 +71,8 @@ def lint(c):
     # c.run(
     #     "poetry run autoflake --remove-all-unused-imports --recursive --remove-unused-variables --in-place ."
     # )
-    c.run(
-        "poetry run flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics"
-    )
-    c.run(
-        "poetry run flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics"
-    )
+    c.run("poetry run flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics")
+    c.run("poetry run flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics")
     # c.run("poetry run mypy .")
     # c.run("poetry run safety check")
     # c.run("poetry run bandit -r .")
@@ -85,11 +80,28 @@ def lint(c):
     # c.run("poetry run pre-commit run --all-files")
 
 
-@task(pre=[clean, update, build, lint, test])
+@task()
+def format(c):
+    print("Formatting...")
+    c.run("poetry run black .")
+    c.run("poetry run isort .")
+    c.run("poetry run autoflake --remove-all-unused-imports --recursive --remove-unused-variables --in-place .")
+
+
+@task(pre=[clean, update, format, lint, utest])
+def ci(c):
+    print("CI build...")
+    c.run("poetry build")
+
+
+@task(pre=[clean, update, format, lint, build, utest])
 def tpublish(c):
     """Publishes a test version of the package to PyPI."""
     username = os.getenv("TEST_PYPI_USERNAME")
     password = os.getenv("TEST_PYPI_PASSWORD")
 
     c.run("poetry config repositories.testpypi https://test.pypi.org/legacy/")
-    c.run(f"poetry publish --username={username} --password={password} --repository testpypi", pty=False)
+    c.run(
+        f"poetry publish --username={username} --password={password} --repository testpypi",
+        pty=False,
+    )

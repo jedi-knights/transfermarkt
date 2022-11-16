@@ -1,7 +1,5 @@
 from transfermarkt.page.competitions import CompetitionsPage
 
-import requests
-
 # from transfermarkt.common.gender import Gender
 # from transfermarkt.common.model.player import Player
 # from transfermarkt.common.model.team import Team
@@ -21,7 +19,6 @@ class Market:
 
 
 if __name__ == "__main__":
-    pass
     service = MarketService()
 
     competition_count = 0
@@ -44,7 +41,6 @@ if __name__ == "__main__":
                     print(f"\t\t{player}")
         except Exception as e:
             print(e)
-
 
     print(f"Competitions: {competition_count}")
     print(f"Teams: {team_count}")

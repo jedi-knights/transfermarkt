@@ -8,7 +8,7 @@ def test_male_repr():
 
 
 def test_female_repr():
-    assert repr(Gender.Female) =="female"
+    assert repr(Gender.Female) == "female"
 
 
 def test_male_str():

@@ -1,8 +1,6 @@
-from unittest import mock
-
-import bs4
 import datetime
 
+import bs4
 from freezegun import freeze_time
 
 from transfermarkt.page import utils

@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 from transfermarkt.common.gender import Gender
-from transfermarkt.models.meta import MetaProperty, MetaModel
+from transfermarkt.models.meta import MetaModel
 
 
 # noinspection PyTypeChecker

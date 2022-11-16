@@ -2,7 +2,6 @@ import bs4
 import requests
 
 from transfermarkt.common.currency import Currency
-
 from transfermarkt.common.utils import urljoin
 
 

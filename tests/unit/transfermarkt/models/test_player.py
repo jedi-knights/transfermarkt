@@ -3,6 +3,7 @@ import pytest
 from transfermarkt.common.gender import Gender
 from transfermarkt.models.player import Player
 
+
 @pytest.fixture
 def player():
     return Player(
@@ -12,8 +13,9 @@ def player():
         last_name="Flintstone",
         club="Bedrock",
         state="CA",
-        position="Forward"
+        position="Forward",
     )
+
 
 class TestPlayerConstructor:
     def test_id(self):
@@ -116,20 +118,29 @@ def test_committed_false(player):
 
 
 def test_repr(player):
-    assert repr(player) == "<Player(id='1', name='Wilma Flintstone', gender='Female', state='CA', position='Forward', club='Bedrock')>"
+    assert (
+        repr(player)
+        == "<Player(id='1', name='Wilma Flintstone', gender='Female', state='CA', position='Forward', club='Bedrock')>"
+    )
 
 
 def test_repr_with_grad_year(player):
+    expected = "<Player(id='1', name='Wilma Flintstone', year='2021', gender='Female',"
+    expected += " state='CA', position='Forward', club='Bedrock')>"
     player.add_property("grad_year", "2021")
-    assert repr(player) == "<Player(id='1', name='Wilma Flintstone', year='2021', gender='Female', state='CA', position='Forward', club='Bedrock')>"
+    assert repr(player) == expected
 
 
 def test_repr_committed(player):
+    expected = "<Player(id='1', name='Wilma Flintstone', gender='Female', state='CA',"
+    expected += " position='Forward', club='Bedrock', commitment='test')>"
     player.add_property("commitment", "test")
-    assert repr(player) == "<Player(id='1', name='Wilma Flintstone', gender='Female', state='CA', position='Forward', club='Bedrock', commitment='test')>"
+    assert repr(player) == expected
 
 
 def test_repr_with_string_gender(player):
+    expected = "<Player(id='1', name='Wilma Flintstone', gender='female', state='CA',"
+    expected += " position='Forward', club='Bedrock')>"
+
     player.gender = "female"
-    assert repr(
-        player) == "<Player(id='1', name='Wilma Flintstone', gender='female', state='CA', position='Forward', club='Bedrock')>"
+    assert repr(player) == expected

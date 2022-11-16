@@ -1,4 +1,4 @@
-from transfermarkt.models.meta import MetaProperty, MetaModel
+from transfermarkt.models.meta import MetaModel
 
 
 class Team(MetaModel):
@@ -18,4 +18,3 @@ class Team(MetaModel):
         avps.append(f"title='{self.title}'")
 
         return f"<Team({', '.join(avps)})>"
-

@@ -33,4 +33,3 @@ def string_to_gender(value: str | None) -> Gender:
         return Gender.Female
     else:
         raise ValueError(f"Invalid gender string '{value}'!")
-

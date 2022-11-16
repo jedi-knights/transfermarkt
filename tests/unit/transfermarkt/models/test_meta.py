@@ -1,6 +1,6 @@
 import pytest
 
-from transfermarkt.models.meta import MetaProperty, MetaModel
+from transfermarkt.models.meta import MetaModel, MetaProperty
 
 
 @pytest.fixture

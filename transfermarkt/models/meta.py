@@ -85,4 +85,3 @@ class MetaModel:
             if item.name == name:
                 self.meta.remove(item)
                 break
-

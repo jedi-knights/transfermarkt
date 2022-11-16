@@ -1,8 +1,6 @@
-from transfermarkt.page.object import PageObject
 from transfermarkt.models.domain import Domain
-
-from transfermarkt.page.utils import get_text_from_anchor, get_href_from_anchor
-
+from transfermarkt.page.object import PageObject
+from transfermarkt.page.utils import get_href_from_anchor, get_text_from_anchor
 
 # from transfermarkt.page.utils import get_href_from_anchor, get_text_from_anchor
 
@@ -15,9 +13,7 @@ class HomePage(PageObject):
 
         user_agent = "transfermarkt"
 
-        self.headers = {
-            'user-agent': user_agent
-        }
+        self.headers = {"user-agent": user_agent}
 
         self.load()
 

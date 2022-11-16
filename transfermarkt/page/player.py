@@ -3,8 +3,8 @@ import datetime as dt
 import bs4
 
 from transfermarkt.common.currency import Currency
-from transfermarkt.page.object import PageObject
 from transfermarkt.common.utils import slugify
+from transfermarkt.page.object import PageObject
 from transfermarkt.services.currency import CurrencyService
 
 
@@ -21,11 +21,9 @@ class PlayerPage(PageObject):
         identifier = kwargs.get("identifier")
         self.currency_service = kwargs.get("currency_service", CurrencyService())
 
-        user_agent = 'transfermarkt'
+        user_agent = "transfermarkt"
 
-        self.headers = {
-            'user-agent': user_agent
-        }
+        self.headers = {"user-agent": user_agent}
 
         self.url = f"https://www.transfermarkt.com/{slug}/profil/spieler/{identifier}"
 
