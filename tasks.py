@@ -19,6 +19,11 @@ def build(c):
 
 
 @task
+def venv(c):
+    print("Creating virtual environment...")
+    c.run("python3 -m venv .venv")
+
+@task
 def clean(c):
     print("Cleaning up...")
     c.run("rm -rf coverage")
@@ -59,7 +64,7 @@ def ucover(c):
 @task
 def cover(c):
     """Runs PyTest unit and integration tests with coverage."""
-    c.run("coverage run -m pytest --cov=common tests/unit tests/integration")
+    c.run("coverage run -m pytest tests/unit")
     c.run("coverage lcov -o ./coverage/lcov.info")
 
 
