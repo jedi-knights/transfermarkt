@@ -1,3 +1,5 @@
+import os
+
 from transfermarkt.page.competitions import CompetitionsPage
 
 # from transfermarkt.common.gender import Gender
@@ -9,38 +11,54 @@ from transfermarkt.services.market import MarketService
 
 class Market:
     def __init__(self, **kwargs):
-        pass
+        self.market_service = kwargs.get("market_service", MarketService())
+        self.competitions_page = kwargs.get("competitions_page", CompetitionsPage())
 
     def get_competitions(self):
-        return CompetitionsPage().get_competitions()
+        return self.competitions_page.get_competitions()
 
-    def teams(self, competition_id):
-        pass
+    def get_teams(self, competition_id: str):
+        return self.market_service.get_teams(competition_id)
+
+    def get_players(self, team_id: str):
+        return self.market_service.get_players(team_id)
 
 
 if __name__ == "__main__":
-    service = MarketService()
+    market = Market()
 
     competition_count = 0
     team_count = 0
     player_count = 0
-    competitions = CompetitionsPage.get_all_competitions()
-    for competition in competitions:
-        try:
-            competition_count += 1
-            print(competition)
+    competitions = market.get_competitions()
 
-            teams = service.get_teams(identifier=competition.id)
-            for team in teams:
-                team_count += 1
-                print(f"\t{team}")
+    if os.path.isfile("output.txt"):
+        os.remove("output.txt")
 
-                players = service.get_players(identifier=team.id)
-                for player in players:
-                    player_count += 1
-                    print(f"\t\t{player}")
-        except Exception as e:
-            print(e)
+
+    with open("output.txt", "w") as f:
+        for competition in competitions:
+            try:
+                competition_count += 1
+                print(competition)
+                f.write(f"{competition}\n")
+
+                teams = market.get_teams(competition.id)
+                for team in teams:
+                    team_count += 1
+                    print(f"\t{team}")
+                    f.write(f"\t{team}\n")
+
+                    players = market.get_players(team.id)
+                    for player in players:
+                        player_count += 1
+                        f.write(f"\t\t{player}\n")
+
+                    f.write("\n")
+
+                f.write("\n")
+            except Exception as e:
+                print(e)
 
     print(f"Competitions: {competition_count}")
     print(f"Teams: {team_count}")
