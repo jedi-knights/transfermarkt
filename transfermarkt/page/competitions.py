@@ -1,28 +1,35 @@
+"""
+This module contains page objects for the competitions page.
+"""
+
 from transfermarkt.common.utils import urljoin
 from transfermarkt.models.competition import Competition
 from transfermarkt.page.object import PageObject
 from transfermarkt.page.utils import BASE_URL
 
 
-def parse_competition(table_row):
-    data = {}
-
-    return data
-
-    # return {
-    #     "id": DataCell(table_row[2]).link_href().extract_competition_id().read(),
-    #     "name": DataCell(table_row[2]).link_title().read(),
-    #     "country": DataCell(table_row[3]).img_title().read(),
-    #     "total_clubs": DataCell(table_row[4]).to_int().read(),
-    #     "total_players": DataCell(table_row[5]).to_int().read(),
-    #     "avg_age": DataCell(table_row[6]).to_float().read(),
-    #     "foreigners_percent":
-    #     DataCell(table_row[7]).to_string().parse_percentage().read(),
-    #     "total_value": DataCell(table_row[9]).to_string().read(),
-    # }
+# def parse_competition(table_row):
+#     data = {}
+#
+#     return data
+#
+#     # return {
+#     #     "id": DataCell(table_row[2]).link_href().extract_competition_id().read(),
+#     #     "name": DataCell(table_row[2]).link_title().read(),
+#     #     "country": DataCell(table_row[3]).img_title().read(),
+#     #     "total_clubs": DataCell(table_row[4]).to_int().read(),
+#     #     "total_players": DataCell(table_row[5]).to_int().read(),
+#     #     "avg_age": DataCell(table_row[6]).to_float().read(),
+#     #     "foreigners_percent":
+#     #     DataCell(table_row[7]).to_string().parse_percentage().read(),
+#     #     "total_value": DataCell(table_row[9]).to_string().read(),
+#     # }
 
 
 class CompetitionsPage(PageObject):
+    """
+    This class provides the logic to parse the competitions page.
+    """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
@@ -35,6 +42,9 @@ class CompetitionsPage(PageObject):
         self.load()
 
     def get_page_count(self):
+        """
+        Returns the total number of pages.
+        """
         unordered_list = self.soup.find("ul", {"class", "tm-pagination"})
         last_number = unordered_list.find_all("li")[-3].text.strip()
         last_number = int(last_number)
@@ -42,6 +52,9 @@ class CompetitionsPage(PageObject):
         return last_number
 
     def get_competitions(self) -> list:
+        """
+        Returns a list of competitions.
+        """
         competitions = []
 
         tables = self.soup.find_all("table", {"class": "items"})
@@ -75,6 +88,9 @@ class CompetitionsPage(PageObject):
 
     @staticmethod
     def get_all_competitions():
+        """
+        Returns all competitions.
+        """
         page = CompetitionsPage(page=1)
         competitions = page.get_competitions()
 

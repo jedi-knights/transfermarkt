@@ -1,3 +1,7 @@
+"""
+This module provides logic for parsing the home page.
+"""
+
 from transfermarkt.models.domain import Domain
 from transfermarkt.page.object import PageObject
 from transfermarkt.page.utils import get_href_from_anchor, get_text_from_anchor
@@ -6,6 +10,9 @@ from transfermarkt.page.utils import get_href_from_anchor, get_text_from_anchor
 
 
 class HomePage(PageObject):
+    """
+    This class provides logic for parsing the home page.
+    """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
@@ -18,6 +25,9 @@ class HomePage(PageObject):
         self.load()
 
     def get_domains(self):
+        """
+        Returns the domains.
+        """
         switcher = self.soup.select("div.tm-domainswitcher-box > ul")
 
         if len(switcher) == 0:

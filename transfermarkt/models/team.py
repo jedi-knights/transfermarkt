@@ -1,7 +1,13 @@
+"""
+This module contains the domain model for Team.
+"""
 from transfermarkt.models.meta import MetaModel
 
 
 class Team(MetaModel):
+    """
+    This class contains the model for a team.
+    """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
@@ -10,6 +16,9 @@ class Team(MetaModel):
         self.abbreviation = kwargs.get("abbreviation")
 
     def __repr__(self):
+        """
+        This method returns a string representation of the team.
+        """
         avps = []
 
         if self.id is not None:

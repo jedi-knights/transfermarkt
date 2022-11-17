@@ -1,3 +1,7 @@
+"""
+This module provides logic for parsing the player page.
+"""
+
 import datetime as dt
 
 import bs4
@@ -9,6 +13,9 @@ from transfermarkt.services.currency import CurrencyService
 
 
 class PlayerPage(PageObject):
+    """
+    This class provides logic for parsing the player page.
+    """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
@@ -32,30 +39,51 @@ class PlayerPage(PageObject):
 
     @property
     def name(self) -> str:
+        """
+        Returns the name of the player.
+        """
         return self.soup.find("h1", class_=["data-header__headline-wrapper"]).text.strip()
 
     @property
     def height(self) -> str:
+        """
+        Returns the height of the player.
+        """
         return self.soup.find("span", {"itemprop": "height"}).text.strip()
 
     @property
     def citizenship(self) -> str:
+        """
+        Returns the citizenship of the player.
+        """
         return self.soup.find("span", {"itemprop": "nationality"}).text.strip()
 
     @property
     def position(self) -> str:
+        """
+        Returns the position of the player.
+        """
         raise NotImplementedError()
 
     @property
     def caps(self) -> str:
+        """
+        Returns the number of caps for the player.
+        """
         raise NotImplementedError()
 
     @property
     def goals(self) -> str:
+        """
+        Returns the number of goals scored by the player.
+        """
         raise NotImplementedError()
 
     @property
     def market_value(self) -> str:
+        """
+        Returns the market value of the player.
+        """
         value = "0.0"
 
         wrapper = self.soup.find("a", class_=["data-header__market-value-wrapper"])
@@ -67,7 +95,7 @@ class PlayerPage(PageObject):
             unit = waehrung_items[1].text.strip()
 
             for child in list(wrapper.children):
-                if type(child) == bs4.element.NavigableString:
+                if isinstance(child, bs4.element.NavigableString):
                     value = child.strip()
                     if len(value) > 0:
                         value = value.replace('"', "")
@@ -92,6 +120,9 @@ class PlayerPage(PageObject):
 
     @property
     def date_of_birth(self) -> dt.datetime:
+        """
+        Returns the date of birth of the player.
+        """
         value = self.soup.find("span", {"itemprop": "birthDate"}).text.strip()
 
         lparen = value.index("(")
@@ -102,8 +133,14 @@ class PlayerPage(PageObject):
 
     @property
     def age(self) -> int:
+        """
+        Returns the age of the player in years.
+        """
         return (dt.datetime.now() - self.date_of_birth).days // 365
 
     @property
     def place_of_birth(self) -> str:
+        """
+        Returns the place of birth.
+        """
         return self.soup.find("span", {"itemprop": "birthPlace"}).text.strip()

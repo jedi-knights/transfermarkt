@@ -7,10 +7,17 @@ from transfermarkt.services.currency import CurrencyService
 
 @pytest.fixture
 def service():
+    """
+    Returns a CurrencyService instance.
+    """
     return CurrencyService()
 
 
 def test_get_exchange_rate(service):
+    """
+    This test is a bit of a cheat, because we are mocking the service method
+    """
+
     # Arrange
     url = "https://www.x-rates.com/calculator/?from=EUR&to=USD&amount=1"
 
@@ -25,6 +32,10 @@ def test_get_exchange_rate(service):
 
 
 def test_get_exchange_rate_missing_span(service):
+    """
+    This test is a bit of a cheat, because we are mocking the service method
+    """
+
     # Arrange
     url = "https://www.x-rates.com/calculator/?from=EUR&to=USD&amount=1"
 
@@ -37,6 +48,10 @@ def test_get_exchange_rate_missing_span(service):
 
 
 def test_convert(service, mocker):
+    """
+    This test is a bit of a cheat, because we are mocking the service method
+    """
+
     # Arrange
     mocker.patch.object(service, "get_exchange_rate", return_value=1.2)
 

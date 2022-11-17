@@ -8,14 +8,23 @@ from transfermarkt.page import utils
 
 class TestGetHrefFromAnchor:
     def test_undefined(self):
+        """
+        Test that the function returns None when the anchor is undefined.
+        """
         assert utils.get_href_from_anchor(None) is None
 
     def test_anchor(self):
+        """
+        Test that the function returns the href of the anchor.
+        """
         html = "<a href='https://www.acme.com'>Acme</a>"
         anchor = bs4.BeautifulSoup(html, "html.parser")
         assert utils.get_href_from_anchor(anchor) == "https://www.acme.com"
 
     def test_container(self):
+        """
+        Test that the function returns the href of the anchor.
+        """
         html = "<div><a href='https://www.acme.com'>Acme</a></div>"
         container = bs4.BeautifulSoup(html, "html.parser")
         assert utils.get_href_from_anchor(container) == "https://www.acme.com"
@@ -38,29 +47,39 @@ class TestGetHrefFromAnchor:
 
 class TestGetTextFromAnchor:
     def test_undefined(self):
+        """
+        This test is here to ensure that the function does not fail when
+        """
         assert utils.get_text_from_anchor(None) is None
 
-    def test_anchor(self):
+    def test_with_anchor(self):
+        """
+        Make sure the get_text_from_anchor function returns the text from the anchor.
+        """
         html = "<a href='https://www.acme.com'>Acme</a>"
         anchor = bs4.BeautifulSoup(html, "html.parser")
         assert utils.get_text_from_anchor(anchor) == "Acme"
 
-    def test_container(self):
-        html = "<div><a href='https://www.acme.com'>Acme</a></div>"
-        container = bs4.BeautifulSoup(html, "html.parser")
-        assert utils.get_text_from_anchor(container) == "Acme"
-
     def test_no_anchor(self):
+        """
+        Make sure the get_text_from_anchor function returns None when there is no anchor.
+        """
         html = "<div>Acme</div>"
         container = bs4.BeautifulSoup(html, "html.parser")
         assert utils.get_text_from_anchor(container) is None
 
     def test_no_text(self):
+        """
+        Make sure the get_text_from_anchor function returns None when there is no text.
+        """
         html = "<a href='https://www.acme.com'></a>"
         anchor = bs4.BeautifulSoup(html, "html.parser")
         assert utils.get_text_from_anchor(anchor) is None
 
     def test_text_with_only_spaces(self):
+        """
+        Make sure the get_text_from_anchor function returns None when there is only spaces.
+        """
         html = "<a href='https://www.acme.com'>  </a>"
         anchor = bs4.BeautifulSoup(html, "html.parser")
         assert utils.get_text_from_anchor(anchor) is None

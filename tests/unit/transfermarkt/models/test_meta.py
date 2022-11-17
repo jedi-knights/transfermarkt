@@ -5,19 +5,31 @@ from transfermarkt.models.meta import MetaModel, MetaProperty
 
 @pytest.fixture
 def meta_property():
+    """
+    Returns a MetaProperty instance.
+    """
     return MetaProperty(name="test", value="value")
 
 
 @pytest.fixture
 def meta_model():
+    """
+    Returns a MetaModel instance.
+    """
     return MetaModel(meta=[MetaProperty(name="test", value="value")])
 
 
 class TestMetaPropertyConstructor:
     def test_name(self, meta_property):
+        """
+        Tests the name property.
+        """
         assert meta_property.name == "test"
 
     def test_value(self, meta_property):
+        """
+        Tests the value property.
+        """
         assert meta_property.value == "value"
 
 

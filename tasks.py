@@ -87,6 +87,12 @@ def lint(c):
     # c.run("poetry run pre-commit run --all-files")
 
 
+@task
+def pylint(c):
+    print("Linting...")
+    c.run("poetry run pylint $(git ls-files '*.py')")
+
+
 @task()
 def format(c):
     print("Formatting...")
@@ -98,4 +104,3 @@ def format(c):
 @task(pre=[clean, update, format, lint, utest], post=[build], default=True)
 def ci(c):
     print("CI build...")
-

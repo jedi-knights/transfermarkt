@@ -1,3 +1,4 @@
+"""This module provides services for the transfermarkt."""
 import requests
 
 from transfermarkt.common.gender import Gender
@@ -7,6 +8,7 @@ from transfermarkt.models.team import Team
 
 
 class MarketService:
+    """The MarketService class provides methods to retrieve data from the transfermarkt site."""
     BASE_URL = "https://www.transfermarkt.com"
 
     POSITION_MAPPING = {
@@ -21,17 +23,26 @@ class MarketService:
 
     @property
     def headers(self):
+        """
+        Retrieve the headers for the request.
+        """
         return {"User-Agent": "transfermarkt"}
 
     def get(self, url: str) -> requests.Response:
+        """
+        Retrieve a response from the transfermarkt site.
+        """
         headers = {"user-agent": "transfer_market_service"}
         url = urljoin(self.BASE_URL, url)
-        res = requests.get(url, headers=headers)
+        res = requests.get(url, headers=headers, timeout=10)
         res.raise_for_status()
 
         return res
 
     def get_teams(self, identifier: str):
+        """
+        Retrieve a list of teams.
+        """
         teams = []
 
         res = self.get(f"/quickselect/teams/{identifier}")
@@ -47,17 +58,20 @@ class MarketService:
 
         return teams
 
-    def get_player_profile(self, name: str, pid: str) -> dict:
-        """Retrieve a player profile
-
-        Example:
-            https://www.transfermarkt.com/alexander-molnar/profil/spieler/100000
-        """
-        profile = {}
-
-        return profile
+    # def get_player_profile(self, name: str, pid: str) -> dict:
+    #     """Retrieve a player profile
+    #
+    #     Example:
+    #         https://www.transfermarkt.com/alexander-molnar/profil/spieler/100000
+    #     """
+    #     profile = {}
+    #
+    #     return profile
 
     def get_players(self, identifier: str) -> list[Player]:
+        """
+        Retrieve a list of players.
+        """
         players = []
 
         res = self.get(f"/quickselect/players/{identifier}")

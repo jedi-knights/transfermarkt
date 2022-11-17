@@ -1,3 +1,7 @@
+"""
+This module tests the page object module.
+"""
+
 import pytest
 import requests_mock
 

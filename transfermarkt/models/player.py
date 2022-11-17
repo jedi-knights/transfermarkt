@@ -1,3 +1,7 @@
+"""
+This module contains domain models for a player.
+"""
+
 from dataclasses import dataclass
 
 from transfermarkt.common.gender import Gender
@@ -7,6 +11,9 @@ from transfermarkt.models.meta import MetaModel
 # noinspection PyTypeChecker
 @dataclass
 class Player(MetaModel):
+    """
+    This class contains the domain model for a player.
+    """
     id: int
     gender: Gender
     first_name: str
@@ -28,10 +35,16 @@ class Player(MetaModel):
 
     @property
     def name(self) -> str:
+        """
+        Returns the full name of the player.
+        """
         return f"{self.first_name} {self.last_name}"
 
     @name.setter
     def name(self, value: str):
+        """
+        Sets the player's name.
+        """
         if value is not None:
             parts = value.split(" ")
 
@@ -47,6 +60,9 @@ class Player(MetaModel):
 
     @property
     def year(self) -> str | None:
+        """
+        Returns the year of the player.
+        """
         result = self.get_property("grad_year")
         if result is None:
             result = self.get_property("graduation_year")
@@ -55,6 +71,9 @@ class Player(MetaModel):
 
     @property
     def commitment(self) -> str | None:
+        """
+        Returns the player's commitment.
+        """
         result = self.get_property("commitment")
 
         if result is None:
@@ -70,10 +89,16 @@ class Player(MetaModel):
 
     @property
     def is_committed(self) -> bool:
+        """
+        Returns True if the player has a commitment, False otherwise.
+        """
         commitment = self.commitment
         return commitment is not None and commitment != ""
 
     def __repr__(self):
+        """
+        Returns a string representation of the player.
+        """
         avps = []
 
         if self.id is not None:
