@@ -95,20 +95,7 @@ def format(c):
     c.run("poetry run autoflake --remove-all-unused-imports --recursive --remove-unused-variables --in-place .")
 
 
-@task(pre=[clean, update, format, lint, utest])
+@task(pre=[clean, update, format, lint, utest], post=[build], default=True)
 def ci(c):
     print("CI build...")
-    c.run("poetry build")
 
-
-@task(pre=[clean, update, format, lint, build, utest])
-def tpublish(c):
-    """Publishes a test version of the package to PyPI."""
-    username = os.getenv("TEST_PYPI_USERNAME")
-    password = os.getenv("TEST_PYPI_PASSWORD")
-
-    c.run("poetry config repositories.testpypi https://test.pypi.org/legacy/")
-    c.run(
-        f"poetry publish --username={username} --password={password} --repository testpypi",
-        pty=False,
-    )
