@@ -60,7 +60,7 @@ class Player(MetaModel):
                 self.last_name = None
 
     @property
-    def year(self) -> str | None:
+    def year(self) -> str:
         """
         Returns the year of the player.
         """
@@ -71,7 +71,7 @@ class Player(MetaModel):
         return result
 
     @property
-    def commitment(self) -> str | None:
+    def commitment(self) -> str:
         """
         Returns the player's commitment.
         """

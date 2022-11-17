@@ -14,7 +14,7 @@ class Gender(Enum):
         return self.name.lower()
 
 
-def string_to_gender(value: str | None) -> Gender:
+def string_to_gender(value: str) -> Gender:
     if value is None:
         raise ValueError("Undefined gender string!")
 
