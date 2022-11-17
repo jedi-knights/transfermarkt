@@ -13,6 +13,7 @@ class HomePage(PageObject):
     """
     This class provides logic for parsing the home page.
     """
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 

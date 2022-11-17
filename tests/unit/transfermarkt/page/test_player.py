@@ -20,6 +20,7 @@ class TestConstructor:
     """
     Test the player constructor.
     """
+
     def test_url_with_slug(self, player):
         """
         Test the url property when the slug is provided.

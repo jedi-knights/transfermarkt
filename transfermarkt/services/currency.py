@@ -11,6 +11,7 @@ from transfermarkt.common.utils import urljoin
 
 class CurrencyService:
     """The CurrencyService class provides methods to retrieve currency exchange rates."""
+
     BASE_URL = "https://www.x-rates.com"
 
     def __init__(self, **kwargs):

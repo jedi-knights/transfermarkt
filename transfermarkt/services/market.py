@@ -9,6 +9,7 @@ from transfermarkt.models.team import Team
 
 class MarketService:
     """The MarketService class provides methods to retrieve data from the transfermarkt site."""
+
     BASE_URL = "https://www.transfermarkt.com"
 
     POSITION_MAPPING = {

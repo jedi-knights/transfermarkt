@@ -8,6 +8,7 @@ class Team(MetaModel):
     """
     This class contains the model for a team.
     """
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 

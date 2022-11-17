@@ -14,6 +14,7 @@ class Player(MetaModel):
     """
     This class contains the domain model for a player.
     """
+
     id: int
     gender: Gender
     first_name: str

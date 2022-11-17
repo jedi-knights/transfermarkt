@@ -7,6 +7,7 @@ class MetaProperty:
     """
     This class contains the model for a meta property.
     """
+
     def __init__(self, **kwargs):
         self.name = kwargs.get("name")
         self.value = kwargs.get("value")
@@ -68,6 +69,7 @@ class MetaModel:
     """
     This class contains the domain model for meta data.
     """
+
     def __init__(self, **kwargs):
         self.meta = kwargs.get("meta", [])
 
@@ -81,7 +83,7 @@ class MetaModel:
 
         return False
 
-    def get_property(self, name: str) -> str | None:
+    def get_property(self, name: str):
         """
         This method returns the value of a property.
         """
@@ -91,7 +93,7 @@ class MetaModel:
 
         return None
 
-    def update_property(self, name: str, value: str | None):
+    def update_property(self, name: str, value: str):
         """
         This method updates a property in the meta data.
         """
@@ -104,7 +106,7 @@ class MetaModel:
         if not found:
             self.add_property(name, value)
 
-    def add_property(self, name: str, value: str | None):
+    def add_property(self, name: str, value: str):
         """
         This method adds a property to the meta data.
         """

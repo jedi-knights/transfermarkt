@@ -7,7 +7,6 @@ from transfermarkt.models.competition import Competition
 from transfermarkt.page.object import PageObject
 from transfermarkt.page.utils import BASE_URL
 
-
 # def parse_competition(table_row):
 #     data = {}
 #
@@ -30,6 +29,7 @@ class CompetitionsPage(PageObject):
     """
     This class provides the logic to parse the competitions page.
     """
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 

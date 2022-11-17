@@ -16,6 +16,7 @@ class PlayerPage(PageObject):
     """
     This class provides logic for parsing the player page.
     """
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 

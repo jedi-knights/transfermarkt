@@ -10,6 +10,7 @@ class PageObject:
     The PageObject class is the base class for all page objects. It provides the
     basic functionality to load a page and to extract data from the page.
     """
+
     def __init__(self, **kwargs):
         self.url = kwargs.get("url")
         self.soup = None

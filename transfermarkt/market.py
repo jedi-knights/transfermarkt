@@ -17,6 +17,7 @@ class Market:
     """
     This class contains the main interface into the Transfermarkt package.
     """
+
     def __init__(self, **kwargs):
         self.market_service = kwargs.get("market_service", MarketService())
         self.competitions_page = kwargs.get("competitions_page", CompetitionsPage())
