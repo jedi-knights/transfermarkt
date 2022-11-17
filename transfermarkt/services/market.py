@@ -69,7 +69,7 @@ class MarketService:
     #
     #     return profile
 
-    def get_players(self, identifier: str) -> list[Player]:
+    def get_players(self, identifier: str):
         """
         Retrieve a list of players.
         """
