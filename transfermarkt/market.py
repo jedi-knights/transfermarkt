@@ -35,7 +35,6 @@ if __name__ == "__main__":
     if os.path.isfile("output.txt"):
         os.remove("output.txt")
 
-
     with open("output.txt", "w") as f:
         for competition in competitions:
             try:
