@@ -60,7 +60,7 @@ def ucover(c):
     """Runs PyTest unit tests with coverage."""
     c.run("coverage run -m pytest tests/unit")
     c.run("coverage lcov -o ./coverage/lcov.info")
-    c.run("coverage report --fail-under=99")
+    c.run("coverage report --fail-under=90")
 
 
 @task
