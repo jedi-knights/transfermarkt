@@ -62,6 +62,8 @@ mypy = "^0.991"
 requests-mock = "^1.9.3"
 Flake8-pyproject = "^1.1.0.post0"
 freezegun = "^1.0.0"
+semantic-version = "^2.10.0"
+python-semantic-release = "^7.19.0"
 
 [tool.flake8]
 ignore = ['C901', 'E203', 'F401', 'W503']
@@ -90,3 +92,7 @@ exclude = '''
   | dist
 )/
 '''
+
+[tool.semantic_release]
+version_source = "commit"
+version_variable = "pyproject.toml:tool.poetry.version"
