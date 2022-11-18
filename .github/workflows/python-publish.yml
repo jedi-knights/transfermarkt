@@ -36,7 +36,7 @@ jobs:
         virtualenvs-in-project: false
         installer-parallel: true
 
-    - name: Install Dependencies
+    - name: Install Dependencies and Build
       run: |
         python3 -m venv .venv
         source .venv/bin/activate
@@ -44,11 +44,7 @@ jobs:
         poetry config virtualenvs.create true
         poetry config virtualenvs.path .venv
         poetry install --no-interaction --no-root
-
-    - name: Build package
-      run: |
-        source .venv/bin/activate
-        invoke build
+        poetry build
 
     - name: Publish Python Poetry package
       uses: JRubics/poetry-publish@v1.13
