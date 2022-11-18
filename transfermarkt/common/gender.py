@@ -27,9 +27,11 @@ def string_to_gender(value: str) -> Gender:
 
     if value in ["all"]:
         return Gender.All
-    elif value in ["m", "male"]:
+
+    if value in ["m", "male"]:
         return Gender.Male
-    elif value in ["f", "female"]:
+
+    if value in ["f", "female"]:
         return Gender.Female
-    else:
-        raise ValueError(f"Invalid gender string '{value}'!")
+
+    raise ValueError(f"Invalid gender string '{value}'!")

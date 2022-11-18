@@ -8,8 +8,8 @@ def urljoin(base: str, path: str):
     if len(base) == 0:
         if len(path) == 0:
             return ""
-        else:
-            return path
+
+        return path
 
     if base.endswith("/"):
         base = base[:-1]

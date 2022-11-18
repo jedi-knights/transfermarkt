@@ -16,7 +16,7 @@ class Currency(Enum):
 
 def string_to_currency(string: str) -> Currency:
     for currency in Currency:
-        if currency.value == string or currency.name == string:
+        if string in [currency.value, currency.name]:
             return currency
 
     raise ValueError(f"Currency {string} not found")

@@ -70,6 +70,20 @@ ignore = ['C901', 'E203', 'F401', 'W503']
 max-line-length = 88
 exclude = ['.env', '.venv', '.env', 'env', 'migrations', '__pycache__', 'manage.py', 'settings.py']
 
+[tool.pylint."MESSAGES CONTROL"]
+disable = [
+    "C0103", # Invalid name
+    "C0301", # Line too long
+    "C0114", # Missing module docstring
+    "C0115", # Missing class docstring
+    "C0116", # Missing function or method docstring
+    "R0902", # Too many instance attributes
+    "R0903", # Too few public methods
+    "W0212", # Access to a protected member
+    "W0613", # Unused argument
+    "W0621", # Redefining name from outer scope
+    "W1514" # Using open without explicitly specifying an encoding
+]
 
 [tool.isort]
 profile = "black"

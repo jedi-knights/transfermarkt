@@ -41,7 +41,7 @@ class TestGetDomains:
         domains = home.get_domains()
 
         # Assert
-        assert type(domains) == list
+        assert isinstance(domains, list)
         assert len(domains) == 0
 
     def test_with_valid_soup(self, home):

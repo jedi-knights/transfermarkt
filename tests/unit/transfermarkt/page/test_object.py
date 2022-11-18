@@ -14,15 +14,24 @@ def obj():
 
 
 class MockResponse:
+    """
+    This class mocks a response object.
+    """
     def __init__(self, **kwargs):
         self.status_code = kwargs.get("status_code")
 
     @property
     def status_code(self):
+        """
+        Returns the status code of the response.
+        """
         return self._status_code
 
     @status_code.setter
     def status_code(self, status_code: int):
+        """
+        Sets the status code of the response.
+        """
         self._status_code = status_code
 
 

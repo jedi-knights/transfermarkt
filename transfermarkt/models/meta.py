@@ -42,7 +42,7 @@ class MetaProperty:
         Sets the value of the property.
         """
         if input_value is not None:
-            if type(input_value) != str:
+            if isinstance(input_value, str):
                 input_value = str(input_value)
 
             input_value = input_value.strip()
@@ -112,7 +112,7 @@ class MetaModel:
         """
         if value is not None:
 
-            if type(value) == str:
+            if isinstance(value, str):
                 value = value.strip()
 
                 if len(value) == 0:

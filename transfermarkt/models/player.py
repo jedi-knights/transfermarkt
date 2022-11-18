@@ -83,7 +83,8 @@ class Player(MetaModel):
             if result is not None:
                 if result.endswith(" Women"):
                     return result[:-6].strip()
-                elif result.endswith(" Men"):
+
+                if result.endswith(" Men"):
                     return result[:-4].strip()
 
         return result

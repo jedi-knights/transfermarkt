@@ -92,13 +92,13 @@ def pylint(c):
 
 
 @task()
-def format(c):
+def fmt(c):
     print("Formatting...")
     c.run("poetry run black .")
     c.run("poetry run isort .")
     c.run("poetry run autoflake --remove-all-unused-imports --recursive --remove-unused-variables --in-place .")
 
 
-@task(pre=[clean, update, format, lint, utest], post=[build], default=True)
+@task(pre=[clean, update, fmt, lint, utest], post=[build], default=True)
 def ci(c):
     print("CI build...")

@@ -1,8 +1,15 @@
+"""
+This module contains domain models for a competition.
+"""
+
 from dataclasses import dataclass
 
 
 @dataclass
 class Competition:
+    """
+    This class contains the domain model for a competition.
+    """
     id: str
     name: str
     country: str

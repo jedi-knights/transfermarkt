@@ -3,6 +3,9 @@ from dataclasses import dataclass
 
 @dataclass
 class Club:
+    """
+    This class contains the domain model for a club.
+    """
     id: int
     name: str
     total_players: int

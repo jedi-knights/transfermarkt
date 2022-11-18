@@ -99,7 +99,7 @@ def test_current_season(mocker):
 
 
 @freeze_time("2020-11-04")
-def test_get_season(mocker):
+def test_get_season():
     # Arrange
     input_date = datetime.date(2020, 11, 4)
 
