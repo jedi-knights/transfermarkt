@@ -3,10 +3,10 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [project]
-name = "transfermarkt_ocrosby"
+name = "transfermarkt-ocrosby"
 version = "0.0.0"
 authors = [
-  { name="Example Author", email="author@example.com" },
+  { name="Omar Crosby", email="omar.crosby@gmail.com" },
 ]
 description = "A python module for retrieving information from https://www.transfermarkt.com."
 readme = "README.md"
@@ -36,7 +36,7 @@ keywords = [
 "Target URL" = "https://www.transfermarkt.com"
 
 [tool.poetry]
-name = "transfermarkt"
+name = "transfermarkt-ocrosby"
 version = "0.0.0"
 description = "A python module for retrieving information from https://www.transfermarkt.com."
 authors = ["Omar Crosby <omar.crosby@gmail.com>"]
