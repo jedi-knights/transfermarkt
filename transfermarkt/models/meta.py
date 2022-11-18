@@ -37,15 +37,16 @@ class MetaProperty:
         return self._value
 
     @value.setter
-    def value(self, input_value: str):
+    def value(self, input_value):
         """
         Sets the value of the property.
         """
         if input_value is not None:
             if isinstance(input_value, str):
+                input_value = input_value
+            else:
                 input_value = str(input_value)
-
-            input_value = input_value.strip()
+                input_value = input_value.strip()
 
         self._value = input_value
 
