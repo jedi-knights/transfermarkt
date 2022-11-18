@@ -43,7 +43,7 @@ jobs:
         poetry config virtualenvs.in-project false
         poetry config virtualenvs.create true
         poetry config virtualenvs.path .venv
-        poetry install --no-interaction --no-root
+        poetry install --no-interaction --no-root --without dev
         poetry build
 
     - name: Publish Python Poetry package
