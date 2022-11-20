@@ -20,7 +20,7 @@ def clean(c):
     c.run("rm -rf dist")
     c.run("rm -rf htmlcov")
     c.run("rm -rf .mypy_cache")
-    c.run("rm -rf src/transfermarket/output.txt")
+    c.run("rm -rf transfermarket/output.txt")
 
 
 @task

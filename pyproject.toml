@@ -121,7 +121,7 @@ exclude = '''
 [tool.semantic_release]
 version_source = "commit"
 version_variable = [
-    "src/transfermarket/__init__.py:__version__",
+    "transfermarket/__init__.py:__version__",
     "pyproject.toml:version"
 ]
 version_toml = [
