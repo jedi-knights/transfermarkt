@@ -43,6 +43,7 @@ def test_competitions():
         Competition(id=3, name="Competition 3"),
     ]
 
+
 @pytest.fixture
 def test_teams():
     """

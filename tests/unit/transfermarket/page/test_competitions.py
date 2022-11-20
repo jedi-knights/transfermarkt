@@ -50,7 +50,7 @@ class TestConstructor:
         # Act
         with requests_mock.Mocker() as m:
             m.get("https://www.transfermarkt.com/wettbewerbe/europa?ajax=yw1&page=1", text="Hello World!")
-            page = CompetitionsPage(auto_load=True)
+            CompetitionsPage(auto_load=True)
 
         # Assert
         assert mocked_load.called_once()
@@ -63,10 +63,14 @@ def test_page_count(page):
     # Arrange
     markup = """
     <ul class="tm-pagination">
-        <li class="tm-pagination__list-item"><a href="/wettbewerbe/europa?page=10" title="Page 10" class="tm-pagination__link">10</a></li>
+        <li class="tm-pagination__list-item">
+          <a href="/wettbewerbe/europa?page=10"
+             title="Page 10"
+             class="tm-pagination__link">10</a>
+        </li>
         <li></li>
         <li></li>
-    </ul>    
+    </ul>
     """
     page.soup = bs4.BeautifulSoup(markup, "html.parser")
 

@@ -6,8 +6,6 @@ from invoke import call, task
 load_dotenv()
 
 
-
-
 @task
 def clean(c):
     """

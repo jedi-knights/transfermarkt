@@ -96,7 +96,6 @@ def test_get_players(service):
         m.get("https://www.transfermarkt.com/quickselect/players/1", json=players)
         result = service.get_players("1")
 
-
     assert len(result) == 1
     assert result[0].id == 1
     assert result[0].name == "Player 1"

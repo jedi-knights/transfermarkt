@@ -39,4 +39,3 @@ class Market:
         Returns a list of players for a given team.
         """
         return self.market_service.get_players(team_id)
-
