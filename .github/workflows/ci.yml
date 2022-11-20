@@ -60,7 +60,7 @@ jobs:
 
       - name: Run Tests
         run: |
-          poetry run python -m invoke ucover
+          poetry run python -m invoke cov
 
       - name: Report Coverage
         uses: coverallsapp/github-action@master
