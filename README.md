@@ -15,13 +15,15 @@ pip install transfermarkt_ocrosby
 ```
 
 ## Usage
+
 ```python
-from transfermarkt import Market
+from transfermarket import Market
 ```
 
 ### Get a list of all clubs
+
 ```python
-from transfermarkt import Market
+from transfermarket.page import Market
 
 clubs = Market.get_clubs()
 ```
@@ -41,3 +43,5 @@ $ poetry publish -r testpypi
 - [Github-flavored Markdown](https://guides.github.com/features/mastering-markdown/)
 - [Packaging Projects](https://packaging.python.org/en/latest/tutorials/packaging-projects/)
 - [Semantic Versioning](https://semver.org/)
+- [Semantic release with Python, Poetry & GitHub Actions](https://mestrak.com/blog/semantic-release-with-python-poetry-github-actions-20nn)
+- [GitHub bot to enforce semantic PRs](https://github.com/apps/semantic-pull-requests)
