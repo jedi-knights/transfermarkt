@@ -85,7 +85,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - nane: conventional Changelog Actionn
+      - name: conventional Changelog Actionn
         id: changelog
         uses: TriPSs/conventional-changelog-action@v3
         with:
