@@ -1,3 +1,12 @@
+## [0.1.1](https://github.com/ocrosby/transfermarkt/compare/v0.1.0...v0.1.1) (2022-11-21)
+
+
+### Bug Fixes
+
+* Fixing the python-publish workflows name syntax error. ([ddd875d](https://github.com/ocrosby/transfermarkt/commit/ddd875daace63bb0c1f3fbf483cefd838d344201))
+
+
+
 # [0.1.0](https://github.com/ocrosby/transfermarkt/compare/v0.0.0-alpha.6...v0.1.0) (2022-11-21)
 
 
@@ -25,10 +34,6 @@
 
 
 # [0.0.0-alpha.4](https://github.com/ocrosby/transfermarkt/compare/v0.0.0-alpha.3...v0.0.0-alpha.4) (2022-11-18)
-
-
-
-# [0.0.0-alpha.3](https://github.com/ocrosby/transfermarkt/compare/v0.0.0-alpha.2...v0.0.0-alpha.3) (2022-11-18)
 
 
 
