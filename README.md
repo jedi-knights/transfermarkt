@@ -1,4 +1,4 @@
-# transfermarkt
+# transfermarkt rev: v0.1.0
 A python module for retrieving information from https://www.transfermarkt.com.
 
 ![Test](https://github.com/ocrosby/transfermarkt/actions/workflows/ci.yml/badge.svg)
