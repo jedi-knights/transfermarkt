@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [project]
 name = "transfermarket"
-version = "0.0.1"
+version = "0.0.0"
 authors = [
   { name="Omar Crosby", email="omar.crosby@gmail.com" },
 ]
@@ -37,7 +37,7 @@ keywords = [
 
 [tool.poetry]
 name = "transfermarket"
-version = "0.0.1"
+version = "0.0.0"
 description = "A python module for retrieving information from https://www.transfermarkt.com."
 authors = ["Omar Crosby <omar.crosby@gmail.com>"]
 
@@ -121,8 +121,7 @@ exclude = '''
 [tool.semantic_release]
 version_source = "commit"
 version_variable = [
-    "transfermarket/__init__.py:__version__",
-    "pyproject.toml:version"
+    "transfermarket/__init__.py:__version__"
 ]
 version_toml = [
     "pyproject.toml:project.version",
