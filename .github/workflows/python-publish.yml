@@ -47,29 +47,13 @@ jobs:
         poetry build
         
 
-    - nane: conventional Changelog Actionn
-      id: changelog
-      uses: TriPSs/conventional-changelog-action@v3
+    - name: Python Semantic Release
+      uses: relekang/python-semantic-release@master
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        repository_username: __token__
+        repository_password: ${{ secrets.PYPI_TOKEN }}
 
-    - name: create release
-      uses: ncipollo/release-action@v1
-      if: ${{steps.changelog.outputs.skipped == 'false'}}
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ steps.changelog.outputs.tag }}
-        release_name: ${{ steps.changelog.outputs.tag }}
-        body: ${{ steps.changelog.outputs.clean_changelog }}
-
-#    - name: Python Semantic Release
-#      uses: relekang/python-semantic-release@master
-#      with:
-#        github_token: ${{ secrets.GITHUB_TOKEN }}
-#        repository_username: __token__
-#        repository_password: ${{ secrets.PYPI_TOKEN }}
-#
 #    - name: Publish Python Poetry package
 #      uses: JRubics/poetry-publish@v1.13
 #      with:
