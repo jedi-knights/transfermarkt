@@ -1,4 +1,4 @@
-# transfermarkt rev: v0.1.0
+# transfermarkt rev: v0.1.1
 A python module for retrieving information from https://www.transfermarkt.com.
 
 ![Test](https://github.com/ocrosby/transfermarkt/actions/workflows/ci.yml/badge.svg)
@@ -17,13 +17,13 @@ pip install transfermarkt_ocrosby
 ## Usage
 
 ```python
-from transfermarket import Market
+from transfermarket.market import Market
 ```
 
 ### Get a list of all clubs
 
 ```python
-from transfermarket.page import Market
+from transfermarket.market import Market
 
 clubs = Market.get_clubs()
 ```
