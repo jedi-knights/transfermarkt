@@ -20,6 +20,7 @@
 
 
 ### Features
+<!--next-version-placeholder-->
 
 * Adding a CHANGELOG.md file. ([79cfe4b](https://github.com/ocrosby/transfermarkt/commit/79cfe4b6ba984ff0971904b2ba411a05d782dfcd))
 
