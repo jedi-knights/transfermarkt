@@ -22,6 +22,10 @@
 ### Features
 <!--next-version-placeholder-->
 
+## v0.0.1 (2022-12-02)
+### Fix
+* **changelog:** Adding the next version placeholder to the changelog. ([`c13554e`](https://github.com/ocrosby/transfermarkt/commit/c13554e3fcdb79d25859947d4acf09f26d20dc71))
+
 * Adding a CHANGELOG.md file. ([79cfe4b](https://github.com/ocrosby/transfermarkt/commit/79cfe4b6ba984ff0971904b2ba411a05d782dfcd))
 
 
