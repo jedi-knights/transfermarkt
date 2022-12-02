@@ -26,6 +26,7 @@ class Market:
         """
         Returns a list of competitions.
         """
+        self.competitions_page.load()
         return self.competitions_page.get_competitions()
 
     def get_teams(self, competition_id: str):

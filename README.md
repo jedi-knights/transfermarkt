@@ -37,6 +37,19 @@ $ poetry config repositories.testpypi https://test.pypi.org/legacy/
 $ poetry publish -r testpypi
 ```
 
+## Parsing of commit logs
+The semver level that should be bumped on a release is determined by the commit messages since the last release. In 
+order to be able to decide the correct version and generate the changelog, the content of those commit messages must 
+be parsed. By default, this package uses a parser for the Angular commit message style:
+
+```text
+<type>(<scope>): <subject>
+<BLANK LINE>
+<body>
+<BLANK LINE>
+<footer>
+```
+
 ## References
 - [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 - [Transfermarkt](https://www.transfermarkt.com)
