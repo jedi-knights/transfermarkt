@@ -22,6 +22,12 @@
 ### Features
 <!--next-version-placeholder-->
 
+## v0.0.2 (2023-01-12)
+### Fix
+* Updating version numbers ([`ed2ead8`](https://github.com/ocrosby/transfermarkt/commit/ed2ead8e2df6cb2188662611fc6fb8f4e3db958d))
+* **poetry:** Resetting the version numbers. ([`f5d3902`](https://github.com/ocrosby/transfermarkt/commit/f5d39028735ba27933f59d016a2f5545c7895f43))
+* **poetry:** Updating the semantic release build command. ([`cf12428`](https://github.com/ocrosby/transfermarkt/commit/cf124285d6b84e2ab0f14c24d81fb0955a861f62))
+
 ## v0.0.1 (2022-12-02)
 ### Fix
 * **changelog:** Adding the next version placeholder to the changelog. ([`c13554e`](https://github.com/ocrosby/transfermarkt/commit/c13554e3fcdb79d25859947d4acf09f26d20dc71))
