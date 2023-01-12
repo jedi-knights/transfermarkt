@@ -11,7 +11,7 @@ to write your content.
 
 ## Installation
 ```bash
-pip install transfermarkt_ocrosby
+pip install -e .
 ```
 
 ## Usage
@@ -26,15 +26,6 @@ from transfermarket.market import Market
 from transfermarket.market import Market
 
 clubs = Market.get_clubs()
-```
-
-
-## Publishing the package
-
-```bash
-$ poetry build
-$ poetry config repositories.testpypi https://test.pypi.org/legacy/
-$ poetry publish -r testpypi
 ```
 
 ## Parsing of commit logs
@@ -58,7 +49,7 @@ Each competition can be thought of as a league or set of clubs.
 List all the competitions from the transfermarkt.
 
 ```bash
-$ poetry run market competition list
+$ market competition list
 ```
 
 Output: 
@@ -75,7 +66,7 @@ Each competition is comprised of a set of teams.  Each team has an identifier so
 has the identifier GB1.  You can get a list of all the teams in the Premier League by using the following command.
 
 ```bash
-$ poetry run market team list GB1
+$ market team list GB1
 ```
 
 Output:
@@ -107,7 +98,7 @@ Now note that each team also has an identifier.  You can get a list of all the p
 (for example Arsenal - with identifier 11) by using the following command.
 
 ```bash
-$ poetry run market player list 11
+$ market player list 11
 ```
 
 Output:
@@ -144,5 +135,4 @@ Output:
 - [Github-flavored Markdown](https://guides.github.com/features/mastering-markdown/)
 - [Packaging Projects](https://packaging.python.org/en/latest/tutorials/packaging-projects/)
 - [Semantic Versioning](https://semver.org/)
-- [Semantic release with Python, Poetry & GitHub Actions](https://mestrak.com/blog/semantic-release-with-python-poetry-github-actions-20nn)
 - [GitHub bot to enforce semantic PRs](https://github.com/apps/semantic-pull-requests)
