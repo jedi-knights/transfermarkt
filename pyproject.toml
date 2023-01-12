@@ -1,10 +1,10 @@
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "transfermarket"
-version = "0.0.1"
+version = "0.0.0"
 authors = [
   { name="Omar Crosby", email="omar.crosby@gmail.com" },
 ]
@@ -35,16 +35,15 @@ keywords = [
 "Bug Tracker" = "https://github.com/ocrosby/transfermarkt/issues"
 "Target URL" = "https://www.transfermarkt.com"
 
-[tool.poetry]
-name = "transfermarket"
-version = "0.0.1"
-description = "A python module for retrieving information from https://www.transfermarkt.com."
-authors = ["Omar Crosby <omar.crosby@gmail.com>"]
-
-[tool.pytest.ini_options]
-addopts = "-ra -q --cov-report=term-missing --cov-report=html"
-testpaths = [
-    "tests/unit"
+[tool.setuptools]
+packages = [
+    "cli",
+    "cli.commands",
+    "transfermarket",
+    "transfermarket.common",
+    "transfermarket.models",
+    "transfermarket.page",
+    "transfermarket.services"
 ]
 
 [tool.coverage.run]
@@ -52,35 +51,6 @@ omit = [
     "tests/*",
 ]
 
-[tool.poetry.dependencies]
-python = "^3.8"
-beautifulsoup4 = "^4.9.3"
-requests = "^2.25.1"
-python-dotenv = "^0.21.0"
-click = "^8.1.3"
-
-[tool.poetry.dev-dependencies]
-autoflake = "^1.4"
-black = "^22.10.0"
-pylint = "^2.11.1"
-pytest = "^7.1.3"
-pytest-mock = "^3.10.0"
-pytest-cov = "^4.0.0"
-coverage = "^6.4.4"
-flake8 = "^5.0.4"
-radon = "^5.1.0"
-isort = "^5.5.0"
-invoke = "^1.7.3"
-mypy = "^0.991"
-requests-mock = "^1.9.3"
-Flake8-pyproject = "^1.1.0.post0"
-freezegun = "^1.0.0"
-python-semantic-release = "^7.19.0"
-
-[tool.flake8]
-ignore = ['C901', 'E203', 'F401', 'W503']
-max-line-length = 88
-exclude = ['.env', '.venv', '.env', 'env', 'migrations', '__pycache__', 'manage.py', 'settings.py']
 
 [tool.pylint."MESSAGES CONTROL"]
 disable = [
@@ -125,8 +95,7 @@ version_variable = [
     "transfermarket/__init__.py:__version__"
 ]
 version_toml = [
-    "pyproject.toml:project.version",
-    "pyproject.toml:tool.poetry.version"
+    "pyproject.toml:project.version"
 ]
 version_pattern = [
     "README.md:rev: v{version}"
@@ -136,7 +105,7 @@ branch = "main"
 upload_to_pypi = true
 upload_to_release = true
 commit_subject = "chore: release {version} [skip ci] ***NO_CI***"
-build_command = "poetry build"
+build_command = "python3 -m pip install --upgrade build && python3 -m build"
 
-[tool.poetry.scripts]
+[project.scripts]
 market = "cli.__main__:main"

@@ -3,6 +3,7 @@ import click
 
 from transfermarket.market import Market
 
+
 @click.group()
 def cli():
     """Interact with player data"""

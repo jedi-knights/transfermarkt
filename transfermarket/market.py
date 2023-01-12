@@ -2,8 +2,6 @@
 This module contains the main entry point for the package.
 """
 
-import os
-
 from transfermarket.page.competitions import CompetitionsPage
 
 # from transfermarket.common.gender import Gender

@@ -1,0 +1,8 @@
+freezegun == 1.2.2
+pytest == 7.2.0
+pytest-cov == 4.0.0
+pytest-mock == 3.10.0
+invoke == 1.7.3
+flake8 == 6.0.0
+python-semantic-release == 7.32.2
+requests-mock == 1.10.0

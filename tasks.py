@@ -1,125 +1,60 @@
-import os
-
-from dotenv import load_dotenv
-from invoke import call, task
-
-load_dotenv()
+from invoke import task
 
 
-@task
+@task(aliases=["i"])
+def install(c):
+    c.run("pip install -r requirements.txt")
+
+
+@task(aliases=["u"])
+def update_pip(c):
+    print("Updating dependencies...")
+    c.run("pip install --upgrade pip")
+
+
+@task(aliases=["c"])
 def clean(c):
-    """
-    Clean the project
-    """
     print("Cleaning up...")
-
-    c.run("rm -rf .venv")
+    c.run("rm -rf build")
+    c.run("rm -rf transfermarket.egg-info")
+    c.run("rm -f *.png")
     c.run("rm -rf coverage")
     c.run("rm -rf dist")
+    c.run("rm -f .coverage")
+    c.run("rm -f coverage.xml")
     c.run("rm -rf htmlcov")
-    c.run("rm -rf .mypy_cache")
-    c.run("rm -rf transfermarket/output.txt")
+    c.run("rm -rf tests/htmlcov")
+    c.run("rm -rf tests/.pytest_cache")
+    c.run("rm -rf ./.pytest_cache")
+    c.run("rm -f tests/coverage.xml")
 
 
-@task
-def install(c):
-    """
-    Update Poetry dependencies
-    """
-    print("Install dependencies...")
-    c.run("pip install --upgrade pip")
-    c.run("poetry install --no-interaction --no-root")
-    c.run("echo y | mypy --install-types")
-
-
-@task(post=[install])
-def setup(c):
-    """Set up the project."""
-    c.run("pip install --upgrade pip")
-    c.run("python3 -m venv .venv")
-    c.run(". .venv/bin/activate")
-
-
-@task
-def upgrade(c):
-    """
-    Upgrade project dependencies
-    """
-    print("Upgrade dependencies...")
-    c.run("pip install --upgrade pip")
-    c.run("poetry update --no-interaction")
-
-
-@task
-def build(c):
-    """
-    Build the package
-    """
-    print("Building the project")
-    c.run("poetry build")
-
-
-@task
-def venv(c):
-    print("Creating virtual environment...")
-    c.run("python3 -m venv .venv")
-
-
-@task
+@task(aliases=["t"])
 def test(c):
-    """
-    Run tests
-    """
-    print("Running tests...")
-    c.run("poetry run pytest tests/unit")
+    """Runs PyTest unit tests."""
+    c.run("pytest tests")
 
 
-@task
-def cov(c):
+@task(aliases=["v"])
+def coverage(c):
     """Runs PyTest unit and integration tests with coverage."""
-    c.run("poetry run coverage run -m pytest tests/unit")
-    c.run("poetry run coverage lcov -o ./coverage/lcov.info")
-    c.run("poetry run coverage report --fail-under=90")
+    c.run("coverage run -m pytest")
+    c.run("coverage lcov -o ./coverage/lcov.info")
 
 
-@task()
-def fmt(c):
-    """
-    Format the code
-    """
-    print("Formatting...")
-    c.run("poetry run black .")
-    c.run("poetry run isort .")
-    c.run("poetry run autoflake --remove-all-unused-imports --recursive --remove-unused-variables --in-place .")
-
-
-@task
+@task(aliases=["l"])
 def lint(c):
     print("Linting...")
-    c.run("poetry run flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics")
-    c.run("poetry run flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics")
-    # c.run("poetry run mypy .")
-    # c.run("poetry run safety check")
-    # c.run("poetry run bandit -r .")
-    # c.run("poetry run pyupgrade --py36-plus .")
-    # c.run("poetry run pre-commit run --all-files")
+    c.run(
+        "flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics"
+    )
+    c.run(
+        "flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics"
+    )
 
 
-@task
-def pylint(c):
-    print("Linting...")
-    c.run("poetry run pylint $(git ls-files '*.py')")
-
-
-@task(pre=[clean, install, lint, test])
-def pub(c):
-    """
-    Publishes the project to PyPI.
-    """
-    print("Publishing...")
-    c.run("poetry publish --build --username $PYPI_USERNAME --password $PYPI_PASSWORD")
-
-
-@task(pre=[clean, install, lint, test], post=[build], default=True)
-def ci(c):
-    print("CI build...")
+@task(aliases=["b"], pre=[clean, lint, coverage], default=True)
+def build(c):
+    print("Building the project")
+    c.run("python3 -m pip install --upgrade build")
+    c.run("python -m build")
