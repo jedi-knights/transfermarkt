@@ -22,6 +22,10 @@
 ### Features
 <!--next-version-placeholder-->
 
+## v0.0.3 (2023-01-12)
+### Fix
+* Updating readme ([`ae009e6`](https://github.com/ocrosby/transfermarkt/commit/ae009e64f38313a6e48bc3e4eeb3c568fe3fd6d6))
+
 ## v0.0.2 (2023-01-12)
 ### Fix
 * Updating version numbers ([`ed2ead8`](https://github.com/ocrosby/transfermarkt/commit/ed2ead8e2df6cb2188662611fc6fb8f4e3db958d))
